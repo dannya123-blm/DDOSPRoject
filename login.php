@@ -88,7 +88,7 @@
 
         <button type="submit">Login</button>
     </form>
-    <p>Not registered? <a href="register.html">Create an account</a></p>
+    <p>Not registered? <a href="register.php">Create an account</a></p>
 </div>
 
 </body>

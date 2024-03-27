@@ -94,7 +94,7 @@
 
         <button type="submit">Register</button>
     </form>
-    <p>Already have an account? <a href="login.html">Sign in</a>.</p>
+    <p>Already have an account? <a href="login.php">Sign in</a>.</p>
 </div>
 
 </body>

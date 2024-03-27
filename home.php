@@ -66,7 +66,7 @@
         <h1>UConnect Your virtual whiteboard</h1>
         <p>Track your team whiteboard for everyday</p>
         <div class="navbar">
-            <a href="login.php">Log In</a>
+            <a href="login.html">Log In</a>
         </div>
     </div>
     <div class="image-container">
