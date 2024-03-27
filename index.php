@@ -11,6 +11,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: #cce0ff; /* Blue background color */
         }
 
         #whiteboard-container {
@@ -21,6 +22,7 @@
             border: 2px solid #000;
             cursor: crosshair;
             margin-bottom: 10px;
+            Background-color: white;
         }
 
         #tools {
@@ -29,6 +31,20 @@
 
         .tool {
             cursor: pointer;
+            margin-right: 10px;
+            background-color: #ffff99; /* Yellow button background color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .tool:hover {
+            background-color: #ffff66; /* Lighter yellow on hover */
+        }
+
+        input[type="color"],
+        input[type="range"],
+        button {
             margin-right: 10px;
         }
     </style>
@@ -41,8 +57,9 @@
         <button class="tool" id="eraser">Eraser</button>
         <input type="color" id="colorPicker" value="#000">
         <input type="range" id="thickness" min="1" max="50" value="10">
-        <button id="clear">Clear</button>
-        <button id="undo">Undo</button>
+        <button id="clear" class="tool">Clear</button>
+        <button id="undo" class="tool">Undo</button>
+        <a href="calendar.php" class="tool">Back to Calendar</a>
     </div>
 </div>
 
