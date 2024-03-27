@@ -17,6 +17,11 @@ CREATE TABLE Whiteboard (
     TeamID INT,
     FOREIGN KEY (TeamID) REFERENCES Team(TeamID)
 );
+gugyugyubyu
+
+ivgvhvgghcvg
+
+I like CDCFDCF
 
 CREATE TABLE Notepad (
     NotepadID INT PRIMARY KEY AUTO_INCREMENT,
