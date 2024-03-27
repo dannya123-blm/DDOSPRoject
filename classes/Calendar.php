@@ -1,6 +1,6 @@
 <?php
 
-class Calendar{
+class dCalendar{
 
     protected $CalendarID;
     protected $Date;

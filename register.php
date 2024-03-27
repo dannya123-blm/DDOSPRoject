@@ -1,3 +1,40 @@
+<?php
+require_once 'classes/user.php';
+require_once 'dbconnections.php';
+
+// Function to generate a unique user ID
+function generateUserID() {
+    // Generate a random 8-character alphanumeric string
+    return substr(md5(uniqid(rand(), true)), 0, 8);
+}
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    // As there's no confirm password field, there's no need to retrieve it here
+
+    // Hash the password (You should use a stronger hashing method like password_hash() in production)
+    $passwordHash = md5($password);
+
+    // Generate a unique UserID
+    $userID = generateUserID();
+
+    // Create a new User object
+    $user = new User($userID, $username, $passwordHash, $email);
+
+    // Save the user to the database (Assuming you have a method to insert data into the database)
+    // Example: $user->saveToDatabase();
+
+    // Display success message or redirect to another page
+    $success_message = "Registration successful!";
+    // header("Location: success.php");
+    // exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +116,7 @@
 
 <div class="register-container">
     <h1>Register for UConnect</h1>
-    <form action="">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
@@ -89,10 +126,13 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
-        <label for="confirm_password">Retype Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password" placeholder="Retype your password" required>
-
         <button type="submit">Register</button>
+
+        <?php
+        if (isset($success_message)) {
+            echo '<p style="color: green;">' . $success_message . '</p>';
+        }
+        ?>
     </form>
     <p>Already have an account? <a href="login.php">Sign in</a>.</p>
 </div>

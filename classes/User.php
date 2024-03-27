@@ -1,6 +1,6 @@
 <?php
 
-class User{
+class User {
     protected $UserID;
     protected $Username;
     protected $PasswordHash;
@@ -12,36 +12,27 @@ class User{
         $this->PasswordHash = $PasswordHash;
         $this->Email = $Email;
     }
-    public function getUserID() {
-        return $this->UserID;
-    }
 
-    public function setUserID($UserID) {
-        $this->UserID = $UserID;
-    }
+    // Method to save user data to the database
+    public function saveToDatabase($pdo) {
+        try {
+            // Prepare SQL statement
+            $stmt = $pdo->prepare("INSERT INTO users (UserID, Username, PasswordHash, Email) VALUES (?, ?, ?, ?)");
 
-    public function getUsername() {
-        return $this->Username;
-    }
+            // Bind parameters
+            $stmt->bindParam(1, $this->UserID);
+            $stmt->bindParam(2, $this->Username);
+            $stmt->bindParam(3, $this->PasswordHash);
+            $stmt->bindParam(4, $this->Email);
 
-    public function setUsername($Username) {
-        $this->Username = $Username;
-    }
+            // Execute the statement
+            $stmt->execute();
 
-    public function getPasswordHash() {
-        return $this->PasswordHash;
+            return true; // Successfully inserted
+        } catch (PDOException $e) {
+            // Handle exception
+            return false; // Failed to insert
+        }
     }
-
-    public function setPasswordHash($PasswordHash) {
-        $this->PasswordHash = $PasswordHash;
-    }
-
-    public function getEmail() {
-        return $this->Email;
-    }
-
-    public function setEmail($Email) {
-        $this->Email = $Email;
-    }
-
 }
+?>

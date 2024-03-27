@@ -1,3 +1,40 @@
+<?php
+require_once 'classes/user.php';
+require_once 'dbconnections.php';
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get username and password from form
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    // Hash the password for comparison with the one stored in the database
+    $hashed_password = md5($password); // You should use a more secure hashing algorithm in production
+
+    // Query the database to check if the user exists
+    $query = "SELECT * FROM users WHERE Username=? AND PasswordHash=?";
+    $stmt = $connection->prepare($query);
+    $stmt->bind_param("ss", $username, $hashed_password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 1) {
+        // User exists, fetch user details
+        $row = $result->fetch_assoc();
+
+        // Create a User object with fetched data
+        $user = new User($row['UserID'], $row['Username'], $row['PasswordHash'], $row['Email']);
+
+        // Redirect to a dashboard or another page
+        header("Location: home.php");
+        exit();
+    } else {
+        // User doesn't exist or incorrect credentials
+        $error_message = "Invalid username or password.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +116,7 @@
 
 <div class="login-container">
     <h1>Login</h1>
-    <form action="">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
@@ -87,6 +124,12 @@
         <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
         <button type="submit">Login</button>
+
+        <?php
+        if (isset($error_message)) {
+            echo '<p style="color: red;">' . $error_message . '</p>';
+        }
+        ?>
     </form>
     <p>Not registered? <a href="register.php">Create an account</a></p>
 </div>
