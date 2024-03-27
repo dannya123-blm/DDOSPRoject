@@ -73,10 +73,11 @@ const generateCalendar = (month, year) => {
 
         if (i >= first_day.getDay()) {
             day.innerHTML = i - first_day.getDay() + 1;
-            day.onclick = () =>
-            {
+            day.onclick = () => {
                 window.location.href = "whiteboard.php";
                 console.log(day.innerHTML);
+                allCookies = document.cookie;
+                alert(document.cookie);
             }
 
 

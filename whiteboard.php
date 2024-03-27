@@ -1,3 +1,7 @@
+<?php
+include 'navbar.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +15,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #cce0ff; /* Blue background color */
+            background-color: #cornflowerblue; /* Blue background color */
         }
 
         #whiteboard-container {

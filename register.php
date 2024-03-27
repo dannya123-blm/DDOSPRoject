@@ -2,6 +2,8 @@
 require_once 'classes/user.php';
 require_once 'dbconnections.php';
 
+include 'navbar.php';
+
 // Function to generate a unique user ID
 function generateUserID() {
     // Generate a random 8-character alphanumeric string
@@ -46,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #3498db; /* Blue background */
+            background-color: cornflowerblue; /* Blue background */
             display: flex;
             justify-content: center;
             align-items: center;

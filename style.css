@@ -8,7 +8,7 @@ html,
 body {
     place-items: center;
     font-family: var(--font-family);
-    background:linear-gradient(to right, #9796f0, #fbc7d4);
+    background:linear-gradient(to right, #9796f0, cornflowerblue);
     overflow: hidden;
 }
 .contianer {
@@ -35,7 +35,7 @@ body {
     box-shadow: var(--shadow);
 }
 .calendar-header {
-    background: #9796f0;
+    background: #cornflowerblue;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -1,3 +1,6 @@
+<?php
+include 'navbar.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,11 +69,10 @@
         <h1>UConnect Your virtual whiteboard</h1>
         <p>Track your team whiteboard for everyday</p>
         <div class="navbar">
-            <a href="login.html">Log In</a>
+            <a href="login.php">Log In</a>
         </div>
     </div>
     <div class="image-container">
-        <!-- Replace 'image.jpg' with your image file or embed your animation here -->
         <img src="images/image.png" alt="UConnect Animation">
     </div>
 </div>
