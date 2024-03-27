@@ -1,0 +1,19 @@
+CREATE TABLE User (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    Username VARCHAR(50) UNIQUE,
+    PasswordHash VARCHAR(255),
+    Email VARCHAR(100)
+);
+
+CREATE TABLE Team (
+    TeamID INT PRIMARY KEY AUTO_INCREMENT,
+    TeamName VARCHAR(100) UNIQUE
+);
+
+CREATE TABLE Whiteboard (
+    WhiteboardID INT PRIMARY KEY AUTO_INCREMENT,
+    Date DATE,
+    Content TEXT,
+    TeamID INT,
+    FOREIGN KEY (TeamID) REFERENCES Team(TeamID)
+);
